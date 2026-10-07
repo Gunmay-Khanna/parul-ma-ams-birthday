@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Parul Ma'am! 🧪💜</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh; overflow-x:hidden; color:#fff;
+  font-family:Poppins,sans-serif;
+  background:radial-gradient(circle at 20% 20%,#32165c 0,#160d30 35%,#080516 75%);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.35;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:45px 45px;animation:drift 18s linear infinite;
+}
+@keyframes drift{to{background-position:90px 90px}}
+.screen{display:none;min-height:100vh;padding:30px 20px;align-items:center;justify-content:center;position:relative}
+.screen.active{display:flex}
+.card{
+  width:min(900px,96vw);padding:38px;border:1px solid #ffffff25;border-radius:30px;
+  background:linear-gradient(145deg,#ffffff12,#ffffff06);backdrop-filter:blur(15px);
+  box-shadow:0 25px 80px #0008, inset 0 1px #fff2;text-align:center;
+}
+h1,h2{font-family:"Baloo 2";line-height:1}
+h1{font-size:clamp(48px,8vw,88px);background:linear-gradient(90deg,#ffcf70,#ff82d5,#9bdcff);
+-webkit-background-clip:text;color:transparent}
+h2{font-size:clamp(34px,5vw,56px);margin-bottom:15px}
+p{color:#e9ddfa;line-height:1.7}
+.subtitle{font-size:18px;margin:18px auto 28px;max-width:650px}
+button{
+ border:0;border-radius:999px;padding:14px 25px;font:700 16px Poppins;cursor:pointer;
+ color:#1b1032;background:linear-gradient(90deg,#ffd36b,#ff9fce);box-shadow:0 8px 25px #ff83c744;
+ transition:.2s transform,.2s box-shadow
+}
+button:hover{transform:translateY(-3px);box-shadow:0 12px 30px #ff83c766}
+.small{font-size:13px;color:#bfaed6;margin-top:15px}
+.chem{font-size:74px;margin-bottom:10px;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+.progress{position:fixed;top:0;left:0;height:5px;background:linear-gradient(90deg,#ffd36b,#ff72ca,#75d9ff);width:0;z-index:20;transition:.5s}
+.topline{font-size:13px;color:#c9b7dc;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:25px auto;max-width:620px}
+.choice{padding:20px;border:1px solid #ffffff18;border-radius:20px;background:#ffffff0b;cursor:pointer;transition:.2s}
+.choice:hover{background:#ffffff16;transform:scale(1.02)}
+.choice.correct{border-color:#6ff0ae;background:#39d98218}
+.choice.wrong{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+.photo-slot{
+ aspect-ratio:1;border-radius:24px;overflow:hidden;border:2px dashed #ffffff35;background:#ffffff09;
+ display:flex;align-items:center;justify-content:center;position:relative
+}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-slot .placeholder{padding:15px;color:#bfaed6;font-size:14px}
+.photo-slot.loaded img{display:block}.photo-slot.loaded .placeholder{display:none}
+.caption{position:absolute;bottom:0;left:0;right:0;padding:10px;background:#0009;font-size:13px}
+.memory{margin:22px 0;padding:22px;border-radius:22px;background:#ffffff0a;border:1px solid #ffffff12;text-align:left}
+.memory strong{color:#ffd477}
+.message{
+ font-family:"Baloo 2";font-size:clamp(24px,4vw,38px);line-height:1.35;
+ color:#fff0bc;margin:25px auto;max-width:700px
+}
+.bubbles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:25px}
+.bubble{padding:10px 16px;border-radius:999px;background:#ffffff0c;border:1px solid #ffffff18}
+.hidden{display:none!important}
+#gameMsg{min-height:28px;color:#ffd477;font-weight:600;margin:10px}
+input[type=file]{display:none}
+.upload-label{display:inline-block;margin-top:12px;padding:10px 15px;border-radius:999px;background:#ffffff12;color:#ddd;cursor:pointer;font-size:13px}
+.heart{font-size:40px;animation:heart 1s infinite}
+@keyframes heart{50%{transform:scale(1.18)}}
+.confetti{position:fixed;top:-20px;width:9px;height:15px;z-index:30;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+
+.origami-wrap{display:flex;justify-content:center;margin:24px auto 12px}
+.origami-stage{
+ width:min(430px,82vw);aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+ perspective:1100px;position:relative
+}
+.origami-stage:before{
+ content:"";position:absolute;width:64%;height:22px;bottom:10%;border-radius:50%;
+ background:#0005;filter:blur(11px)
+}
+.paper{
+ width:230px;height:230px;position:relative;cursor:pointer;transform-style:preserve-3d;
+ background:
+   linear-gradient(135deg,#fffdf1 0%,#fff6dc 48%,#f4d7df 100%);
+ border:1px solid #d5bfae;
+ box-shadow:0 20px 35px #0007, inset 0 0 0 1px #ffffffaa;
+ transition:transform 900ms cubic-bezier(.2,.8,.2,1),clip-path 900ms cubic-bezier(.2,.8,.2,1),
+            width 900ms, height 900ms, background 500ms;
+ outline:none;overflow:visible
+}
+.paper:before{
+ content:"";position:absolute;inset:8px;
+ border:1px solid #b99680aa;pointer-events:none
+}
+.paper:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(135deg,#ffffff55,transparent 35%,#a9797040 100%);
+ pointer-events:none
+}
+.paper:focus-visible{box-shadow:0 0 0 4px #fff7,0 20px 35px #0007}
+
+/* Realistic fold lines: thin creases rather than decorative glowing lines */
+.crease{
+ position:absolute;z-index:6;pointer-events:none;opacity:.78;
+ border-top:1.5px dashed #8d7569;
+ filter:none;
+}
+.crease1{width:100%;left:0;top:50%;transform:none}
+.crease2{width:141%;left:-20.5%;top:50%;transform:rotate(45deg)}
+.crease3{width:141%;left:-20.5%;top:50%;transform:rotate(-45deg)}
+.crease4{width:100%;left:0;top:50%;transform:rotate(90deg)}
+.crease:after{
+ content:"";position:absolute;left:0;top:-3px;width:100%;height:5px;
+ background:linear-gradient(90deg,transparent,#fff8,transparent);opacity:.7
+}
+
+/* Paper-folded triangular flaps */
+.petal{
+ display:none;position:absolute;z-index:5;width:0;height:0;
+ background:transparent;border-style:solid;pointer-events:none;
+ filter:drop-shadow(2px 4px 3px #0003)
+}
+.p1{left:0;top:0;border-width:0 115px 115px 0;border-color:transparent #f4c7d8 transparent transparent}
+.p2{right:0;top:0;border-width:0 0 115px 115px;border-color:transparent transparent #efb6cf transparent}
+.p3{right:0;bottom:0;border-width:115px 0 0 115px;border-color:transparent transparent transparent #e7aac7}
+.p4{left:0;bottom:0;border-width:115px 115px 0 0;border-color:#f0bed5 transparent transparent transparent}
+.p5{display:none}
+
+.flower-center{
+ width:52px;height:52px;border-radius:50%;left:calc(50% - 26px);top:calc(50% - 26px);
+ z-index:10;display:none;align-items:center;justify-content:center;font-size:25px;
+ background:radial-gradient(circle at 35% 30%,#ffe7a3,#e5a23b 72%,#b87322);
+ box-shadow:inset -5px -7px 10px #8a501855,0 5px 12px #0004
+}
+
+/* Fold 1: half-fold */
+.paper.fold1{
+ transform:rotateX(8deg) rotateY(-8deg) scale(.94);
+ clip-path:polygon(0 0,100% 0,50% 100%,0 100%);
+}
+.paper.fold1 .crease1{opacity:1}
+
+/* Fold 2: diagonal fold */
+.paper.fold2{
+ transform:rotateX(5deg) rotateY(6deg) scale(.84);
+ clip-path:polygon(0 0,100% 0,100% 50%,50% 100%,0 50%);
+ background:linear-gradient(145deg,#fff6dc,#f1c5d8);
+}
+.paper.fold2 .crease1,.paper.fold2 .crease2{opacity:1}
+
+/* Fold 3: compact diamond / four-flap form */
+.paper.fold3{
+ transform:rotate(0) scale(.72);
+ clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);
+ background:linear-gradient(145deg,#f8d7e2,#e8aec7);
+}
+.paper.fold3 .crease{opacity:.18}
+.paper.fold3 .petal{display:block}
+
+/* Final: unfold into a five-petal origami flower */
+.paper.fold4{
+ width:250px;height:250px;transform:rotate(0) scale(1);
+ clip-path:none;background:transparent;border:0;box-shadow:none;overflow:visible
+}
+.paper.fold4:before,.paper.fold4:after{display:none}
+.paper.fold4 .petal{
+ display:block;width:108px;height:132px;border:0;border-radius:62% 62% 48% 48%;
+ left:calc(50% - 54px);top:calc(50% - 112px);
+ transform-origin:50% 100%;
+ background:linear-gradient(145deg,#ffe2ed 0%,#f4aac9 68%,#ce75ad 100%);
+ box-shadow:inset -8px -9px 14px #9d4c7c44,0 5px 12px #0003;
+}
+.paper.fold4 .p1{transform:rotate(0deg) translateY(-4px)}
+.paper.fold4 .p2{transform:rotate(72deg) translateY(-4px)}
+.paper.fold4 .p3{transform:rotate(144deg) translateY(-4px)}
+.paper.fold4 .p4{transform:rotate(216deg) translateY(-4px)}
+.paper.fold4 .p5{display:block;transform:rotate(288deg) translateY(-4px)}
+.paper.fold4 .flower-center{display:flex}
+.paper.fold4 .crease{display:none}
+
+
+/* Appreciation challenge readability */
+#s5 h2 { color:#fffafc; text-shadow:0 2px 12px #0008; }
+#s5 .choice { color:#f7efff; }
+#s5 .choice.correct { color:#ffffff; }
+#s5 .choice:not(.correct) { color:#eee4f7; }
+#s5 .choice:hover { color:#ffffff; }
+#s5 #selectMsg { color:#f5eafb; }
+#s5 .topline { color:#e7d8f2; }
+
+@media(max-width:650px){.card{padding:25px 18px}.choices,.photo-grid{grid-template-columns:1fr}.photo-grid{max-width:360px;margin-left:auto;margin-right:auto}}
+
+.photo-slot img.photo-ok + .caption{display:block}
+.photo-slot.photo-missing img{display:none}
+.photo-slot.photo-missing .placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<section class="screen active" id="s1">
+ <div class="card">
+   <div class="chem">🧪✨</div>
+   <div class="topline">A Special Birthday Experiment</div>
+   <h1>Happy Birthday,<br>Parul Ma'am!</h1>
+   <p class="subtitle">Welcome to a tiny interactive adventure made especially for a wonderful Chemistry teacher, class teacher and guide.</p>
+   <button onclick="go(2)">🧪 Start the Experiment</button>
+   <div class="small">Objective: Unlock all 4 birthday stages 🎮</div>
+ </div>
+</section>
+
+<section class="screen" id="s2">
+ <div class="card">
+   <div class="topline">Level 1 / 4 · The Chemistry Test</div>
+   <h2>Can you crack the first clue?</h2>
+   <p>Every great teacher leaves a reaction behind. Which one describes the magic of a truly amazing teacher?</p>
+   <div class="choices">
+    <div class="choice" onclick="answer(this,false)">A. Acid + Stress → More Stress</div>
+    <div class="choice" onclick="answer(this,true)">B. Knowledge + Patience → Confidence</div>
+    <div class="choice" onclick="answer(this,false)">C. Homework + Panic → Chaos</div>
+    <div class="choice" onclick="answer(this,false)">D. Exams + Sleep → Impossible</div>
+   </div>
+   <div id="gameMsg"></div>
+   <button id="next2" class="hidden" onclick="go(3)">🔓 Unlock Level 2</button>
+ </div>
+</section>
+
+<section class="screen" id="s3">
+ <div class="card">
+   <div class="topline">Level 2 / 4 · The Memory Lab</div>
+   <h2>Our Favourite Memories 📸</h2>
+   <p>Replace the three placeholders below with your favourite pictures of Parul Ma'am.</p>
+   <div class="photo-grid">
+    <div>
+      <div class="photo-slot" id="photo1"><div class="placeholder">📷<br><br>Photo 1<br><b>Teacher in Action</b></div><img src="parul_photo_1.jpg" alt="Photo of Parul Ma’am" onload="this.classList.add('photo-ok'); this.parentElement.classList.add('loaded')" onerror="this.parentElement.classList.add('photo-missing')"><div class="caption">The Chemistry Queen 🧪</div></div>
+    </div>
+    <div>
+      <div class="photo-slot" id="photo2"><div class="placeholder">📷<br><br>Photo 2<br><b>A Happy Moment</b></div><img src="parul_photo_2.jpg" alt="Photo of Parul Ma’am" onload="this.classList.add('photo-ok'); this.parentElement.classList.add('loaded')" onerror="this.parentElement.classList.add('photo-missing')"><div class="caption">Smiles & Memories 💜</div></div>
+    </div>
+    <div>
+      <div class="photo-slot" id="photo3"><div class="placeholder">📷<br><br>Photo 3<br><b>Class Memory</b></div><img src="parul_photo_3.jpg" alt="Photo of Parul Ma’am" onload="this.classList.add('photo-ok'); this.parentElement.classList.add('loaded')" onerror="this.parentElement.classList.add('photo-missing')"><div class="caption">Our Favourite Teacher 🌟</div></div>
+    </div>
+   </div>
+   <button onclick="go(4)">💜 Continue the Journey</button>
+ </div>
+</section>
+
+<section class="screen" id="s4">
+ <div class="card">
+   <div class="topline">Level 3 / 5 · The Origami Surprise</div>
+   <h2>Fold a Little Birthday Flower 🌸</h2>
+   <p id="foldInstruction">Click the paper to make the first fold. Follow the glowing fold line.</p>
+   <div class="origami-wrap">
+     <div class="origami-stage" id="origamiStage">
+       <button class="paper" id="paper" type="button" aria-label="Click the paper to fold it">
+         <span class="crease crease1"></span><span class="crease crease2"></span>
+         <span class="crease crease3"></span><span class="crease crease4"></span>
+         <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span>
+         <span class="petal p4"></span><span class="petal p5"></span>
+         <span class="flower-center">🌸</span>
+       </button>
+     </div>
+   </div>
+   <div class="fold-status"><span id="foldCount">Fold 0 / 4</span><span id="foldHint">Click the paper ✨</span></div>
+   <div id="foldMsg" aria-live="polite"></div>
+   <button id="next4" class="hidden" type="button" onclick="go(5)">🌸 The Flower Is Ready — Continue</button>
+ </div>
+</section>
+
+<section class="screen" id="s5">
+ <div class="card">
+   <div class="topline">Level 4 / 5 · The Appreciation Challenge</div>
+   <h2>Choose the qualities that describe Ma'am 💫</h2>
+   <div class="bubbles">
+    <button class="choice" type="button" onclick="toggle(this)">🧠 Brilliant</button>
+    <button class="choice" type="button" onclick="toggle(this)">💜 Caring</button>
+    <button class="choice" type="button" onclick="toggle(this)">😂 Fun</button>
+    <button class="choice" type="button" onclick="toggle(this)">🌟 Inspiring</button>
+    <button class="choice" type="button" onclick="toggle(this)">🧪 Chemistry Genius</button>
+    <button class="choice" type="button" onclick="toggle(this)">👑 One-of-a-kind</button>
+   </div>
+   <p id="selectMsg">Select at least 3 qualities to unlock the final message.</p>
+   <button id="next5" class="hidden" type="button" onclick="go(6)">🎁 Unlock Final Level</button>
+ </div>
+</section>
+
+<section class="screen" id="s6">
+ <div class="card">
+   <div class="heart">💖</div>
+   <div class="topline">Final Level / 5 · Birthday Unlocked!</div>
+   <h2>Dear Parul Ma'am,</h2>
+   <div class="message" id="typed"></div>
+   <div class="memory">
+    <strong>🧪 Your Birthday Equation:</strong><br><br>
+    Knowledge + Kindness + Patience + Inspiration + A Little Chemistry Magic
+    <br><br>✨ = <b>A Teacher We Will Always Remember</b> ✨
+   </div>
+   <p>Thank you for being not just a Chemistry teacher and class teacher, but someone who makes learning, growing and believing in ourselves a little easier.</p>
+   <br><h2>🎂 Happy Birthday! 🎂</h2>
+   <p>May your year be filled with happiness, laughter, good health and countless reasons to smile.</p>
+   <br><button type="button" onclick="celebrate()">🎉 Celebrate Again!</button>
+ </div>
+</section>
+
+<script>
+let current=1;
+const total=6;
+function go(n){
+ document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+ const target=document.getElementById('s'+n); if(!target) return;
+ target.classList.add('active'); current=n;
+ document.getElementById('progress').style.width=((n-1)/(total-1)*100)+'%';
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(n===6) typeMessage();
+}
+function answer(el,correct){
+ const msg=document.getElementById('gameMsg');
+ if(correct){el.classList.add('correct');msg.textContent='✨ Correct! That is exactly the reaction we wanted!';document.getElementById('next2').classList.remove('hidden');}
+ else{el.classList.add('wrong');msg.textContent='Hmm… try again, little scientist! 🧪';setTimeout(()=>el.classList.remove('wrong'),350);}
+}
+
+/* ORIGAMI: each click advances one real visual fold */
+let fold=0;
+const paper=document.getElementById('paper');
+function doFold(){
+ if(fold>=4) return;
+ fold++;
+ paper.classList.remove('fold1','fold2','fold3','fold4');
+ paper.classList.add('fold'+fold);
+ document.getElementById('foldCount').textContent=`Fold ${fold} / 4`;
+ const instruction=document.getElementById('foldInstruction');
+ const hint=document.getElementById('foldHint');
+ const msg=document.getElementById('foldMsg');
+ if(fold===1){instruction.textContent='Nice! The first crease is made. Click the paper again.';hint.textContent='Follow the diagonal line ↘';msg.textContent='The first fold is complete…';}
+ if(fold===2){instruction.textContent='Beautiful! The paper is taking shape. One more fold.';hint.textContent='Follow the next crease ✨';msg.textContent='Something beautiful is hiding inside…';}
+ if(fold===3){instruction.textContent='Almost there! Petals are beginning to appear.';hint.textContent='Final fold 🌸';msg.textContent='Just one last fold!';}
+ if(fold===4){instruction.textContent='🌸 You did it! A flower for Parul Ma’am.';hint.textContent='Birthday flower complete!';msg.textContent='A little paper flower, made with a lot of love. 💜';document.getElementById('next4').classList.remove('hidden');celebrate();}
+}
+paper.addEventListener('click',doFold);
+paper.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();doFold();}});
+
+let selected=0;
+function toggle(el){
+ el.classList.toggle('correct');
+ selected=document.querySelectorAll('#s5 .choice.correct').length;
+ document.getElementById('selectMsg').textContent=selected>=3?'🌟 Perfect! The birthday formula is complete.':`Select ${3-selected} more quality${3-selected===1?'':'ies'} to unlock the final message.`;
+ if(selected>=3) document.getElementById('next5').classList.remove('hidden');
+}
+function typeMessage(){
+ const text='Thank you for turning lessons into memories, questions into curiosity, and challenges into confidence. You are truly one of those teachers who leaves a little sparkle behind in every student’s journey. Wishing you the happiest birthday, Parul Ma’am! 💜';
+ const box=document.getElementById('typed'); box.textContent=''; let i=0;
+ const timer=setInterval(()=>{box.textContent+=text[i++]||'';if(i>=text.length)clearInterval(timer)},22);
+ celebrate();
+}
+function celebrate(){
+ for(let i=0;i<90;i++){
+  const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.animationDuration=(2+Math.random()*3)+'s';c.style.transform=`rotate(${Math.random()*360}deg)`;c.style.background=['#ffd36b','#ff82d5','#8ee6ff','#b9ff9d','#ffffff'][Math.floor(Math.random()*5)];document.body.appendChild(c);setTimeout(()=>c.remove(),5500);
+ }
+}
+</script>
+</body>
+</html>
